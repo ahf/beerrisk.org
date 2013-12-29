@@ -56,7 +56,7 @@
         <script src="js/core-min.js"></script>
         <script>
             function calculate(amount, percentage) {
-                return (amount * percentage) / 1000;
+                return (amount * percentage) / 150;
             }
 
             function doCalculation() {
@@ -67,7 +67,7 @@
                     return;
                 }
 
-                var result = calculate(parseFloat(amount) * 10, parseFloat(percentage));
+                var result = calculate(parseFloat(amount), parseFloat(percentage));
                 console.log(result);
                 $("#result").text(result.toFixed(2));
             }
