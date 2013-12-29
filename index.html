@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BeerRisk Calculator</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar navbar-custom" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">BeerRisk</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="mailto:ahf@0x90.dk">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <form class="form-horizontal calculate-form" role="calculate">
+                <label for="input_amount">Beverage size in centiliters</label>
+                <div class="input-group">
+                    <input id="input_amount" type="text" class="form-control" required autofocus>
+                    <span class="input-group-addon">cl</span>
+                </div>
+
+                <label for="input_percentage">Alcohol percentage</label>
+                <div class="input-group">
+                    <input id="input_percentage" type="text" class="form-control" required>
+                    <span class="input-group-addon">%</span>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-lg btn-primary calculate-button center-block" onclick="doCalculation()">
+                        Calculate
+                    </button>
+                </div>
+            </form>
+            <h2 id="result" class="text-center"></h2>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/core-min.js"></script>
+        <script>
+            function calculate(amount, percentage) {
+                return (amount * percentage) / 1000;
+            }
+
+            function doCalculation() {
+                var amount = $("#input_amount").val();
+                var percentage = $("#input_percentage").val();
+
+                if (! amount || ! percentage) {
+                    return;
+                }
+
+                var result = calculate(parseFloat(amount) * 10, parseFloat(percentage));
+                console.log(result);
+                $("#result").text(result.toFixed(2));
+            }
+        </script>
+    </body>
+</html>
