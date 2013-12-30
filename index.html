@@ -68,9 +68,14 @@
                 }
 
                 var result = calculate(parseFloat(amount), parseFloat(percentage));
-                console.log(result);
                 $("#result").text(result.toFixed(2));
             }
+
+            $(document).ready(function() {
+                $('input[type=text]').on('change keyup paste', function(e) {
+                    doCalculation();
+                })
+            });
         </script>
     </body>
 </html>
